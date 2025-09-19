@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 适配移动端 -->
+    <title>梦中的婚礼体验馆 | Dream Wedding Experience Hall</title>
+    <!-- 引入手写体字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <style>
+        /* 基础样式优化 */
+        html { scroll-behavior: smooth; } /* 平滑滚动 */
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #F8FBF6; margin: 0; padding: 0; color: #4A6A3E; line-height: 1.8;}
+        /* 头部样式 */
+        header { background-color: #E8F2E2; padding: 20px; text-align: center; border-bottom: 2px solid #C8D8B8; position: relative;}
+        header h1 { margin: 0; color: #6A8A55; font-family: 'Dancing Script', cursive; font-size: 2.5em;}
+        header .en-title {
+            font-size: 1.2em;
+            color: #8A9A75;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        /* 导航栏样式（含固定效果） */
+        nav { margin-top: 10px; }
+        nav a { margin: 0 15px; text-decoration: none; color: #4A6A3E; font-weight: bold; transition: all 0.3s;}
+        nav a:hover { color: #6A8A55; text-decoration: underline;}
+        .fixed-nav { position: fixed; top: 0; width: 100%; background: rgba(232,242,226,0.95); z-index: 999; padding: 10px 0; border-bottom: 2px solid #C8D8B8;}
+        /* section通用样式 */
+        section { padding: 40px 20px; text-align: center; max-width: 1400px; margin: 0 auto;}
+        section h2 { color: #6A8A55; margin-bottom: 30px; font-family: 'Dancing Script', cursive; font-size: 2em;}
+        section h2 .en-subtitle {
+            display: block;
+            font-size: 0.6em;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-weight: normal;
+            color: #8A9A75;
+            margin-top: 5px;
+        }
+        section p { font-size: 1.1em; margin-bottom: 20px;}
+        /* Logo样式（优化调整） */
+        .logo-container { /* 新增容器，增强Logo视觉聚焦 */
+            position: relative;
+            max-width: 400px;
+            margin: 10px auto 30px;
+            padding: 15px;
+            border-radius: 15px;
+            background: linear-gradient(145deg, #ffffff, #f0f7ed);
+            box-shadow: 0 4px 15px rgba(106,138,85,0.12);
+        }
+        .logo { 
+            max-width: 100%; /* 响应式适配容器 */
+            height: auto; /* 保持宽高比，避免变形 */
+            border-radius: 10px;
+            border: 4px solid #ffffff; /* 白色边框增强层次感 */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08); /*  subtle阴影提升质感 */
+            transition: transform 0.5s ease; /*  hover动画过渡 */
+        }
+        .logo:hover {
+            transform: scale(1.03); /* 轻微放大，增强交互感 */
+        }
+        .logo-desc {
+            margin-top: 10px;
+            font-style: italic;
+            color: #8A9A75;
+        }
+        /* 服务卡片样式（调整英文位置） */
+        .service-list { display: flex; justify-content: space-between; flex-wrap: wrap; max-width: 1200px; margin: 0 auto;}
+        .service-card { width: 45%; min-width: 300px; background: white; padding: 20px; border-radius: 10px; margin: 15px 0; box-shadow: 0 2px 10px rgba(106,138,85,0.1); transition: all 0.3s;}
+        .service-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 15px;}
+        .service-card .card-title {
+            color: #8A9A75;
+            margin-bottom: 15px;
+        }
+        .service-card .card-title .cn-name {
+            font-size: 1.2em;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 3px;
+        }
+        .service-card .card-title .en-name {
+            font-size: 0.9em;
+            font-weight: normal;
+            color: #AAB99F;
+            font-style: italic;
+            display: block;
+        }
+        .service-card:hover { box-shadow: 0 5px 15px rgba(106,138,85,0.2); transform: translateY(-5px);}
+        /* 预约表单样式 */
+        .reserve-form { max-width: 600px; margin: 0 auto; text-align: left; padding: 25px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(106,138,85,0.1);}
+        .reserve-form label { display: block; margin: 12px 0 5px; color: #8A9A75; font-weight: 500;}
+        .reserve-form input, .reserve-form select { width: 100%; padding: 12px; border: 1px solid #D8E8CE; border-radius: 5px; margin-bottom: 15px; box-sizing: border-box;}
+        .reserve-form button { width: 100%; padding: 12px; background: #6A8A55; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; transition: all 0.3s;}
+        .reserve-form button:hover { background: #4A6A3E; transform: scale(1.02);}
+        /* FAQ样式 */
+        .faq-list { max-width: 800px; margin: 0 auto; text-align: left;}
+        .faq-item { margin: 15px 0; border-bottom: 1px dashed #D8E8CE; padding-bottom: 15px;}
+        .faq-item h3 { color: #8A9A75; cursor: pointer; margin: 0;}
+        /* 底部样式 */
+        footer { background-color: #E8F2E2; text-align: center; padding: 25px; font-size: 0.9em; color: #777; border-top: 2px solid #C8D8B8; margin-top: 30px;}
+        .footer-info { margin-top: 10px;}
+        .footer-info a { color: #6A8A55; text-decoration: none; margin: 0 8px;}
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .logo-container {
+                max-width: 300px;
+                padding: 10px;
+            }
+            header .en-title {
+                font-size: 1em;
+            }
+            .service-card {
+                width: 100%;
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>梦中的婚礼体验馆</h1>
+        <div class="en-title">Dream Wedding Experience Hall</div>
+        <nav id="main-nav">
+            <a href="#about">关于我们</a>
+            <a href="#service">体验服务</a>
+            <a href="#reserve">预约体验</a>
+            <a href="#faq">常见问题</a>
+            <a href="#contact">联系我们</a>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>关于我们 <span class="en-subtitle">About Us</span></h2>
+        <!-- 优化后的Logo区域：新增容器包裹 -->
+        <div class="logo-container">
+            <img src="logo.jpg" alt="梦中的婚礼Logo" class="logo">
+            <div class="logo-desc">Dream Wedding</div>
+        </div>
+        <p>我们专注于为年轻人提供浪漫、无压力的沉浸式婚礼体验。</p>
+        <p>无论是情侣、单身，还是筹备中的新人，都可以在这里感受属于自己的“梦中婚礼（Dream Wedding）”。</p>
+        <p>我们相信，婚礼不该是“压力”，而该是“憧憬”——因此我们拒绝繁琐流程与高额消费，只为让每一个人都能轻松感受婚礼的浪漫与美好。</p>
+    </section>
+
+    <section id="service">
+        <h2>体验服务 <span class="en-subtitle">Experience Services</span></h2>
+        <div class="service-list">
+            <div class="service-card">
+                <img src="flow.jpg" alt="沉浸式婚礼流程">
+                <div class="card-title">
+                    <span class="cn-name">沉浸式婚礼流程体验</span>
+                    <span class="en-name">Immersive Wedding Process Experience</span>
+                </div>
+                <p>走过铺满花瓣的红毯，在亲友（或工作人员）的见证下交换誓言，最后开启浪漫舞会——完整还原婚礼核心环节，感受仪式感。</p>
+            </div>
+            <div class="service-card">
+                <img src="scene.jpg" alt="主题婚礼场景">
+                <div class="card-title">
+                    <span class="cn-name">主题婚礼场景体验</span>
+                    <span class="en-name">Themed Wedding Scene Experience</span>
+                </div>
+                <p>森系（绿植+碎花）、复古（油画+蕾丝）、中式（红绸+灯笼）、西式（白纱+蜡烛），4大主题任选，沉浸式感受不同文化的婚礼美学。</p>
+            </div>
+            <div class="service-card">
+                <img src="photo.jpg" alt="婚礼互动拍摄">
+                <div class="card-title">
+                    <span class="cn-name">婚礼互动拍摄区</span>
+                    <span class="en-name">Wedding Interactive Shooting Area</span>
+                </div>
+                <p>免费试穿10+款婚纱/礼服，专业摄影师拍摄写真；可定制15秒婚礼短片（含剪辑+配乐），留下专属浪漫回忆。</p>
+            </div>
+            <div class="service-card">
+                <img src="party.jpg" alt="轻婚礼派对">
+                <div class="card-title">
+                    <span class="cn-name">轻婚礼派对</span>
+                    <span class="en-name">Light Wedding Party</span>
+                </div>
+                <p>每周六晚举办轻派对，提供香槟、小甜点，可与其他用户互动游戏、分享婚礼憧憬，在轻松氛围中结交同频朋友。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="reserve">
+        <h2>预约你的专属婚礼体验 <span class="en-subtitle">Reserve Your Exclusive Wedding Experience</span></h2>
+        <div class="reserve-form">
+            <label>体验类型</label>
+            <select>
+                <option>沉浸式流程体验（红毯+誓言）</option>
+                <option>主题场景体验（森系/复古/中式/西式）</option>
+                <option>婚礼拍摄体验（婚纱试穿+短片）</option>
+                <option>轻婚礼派对体验（每周六晚）</option>
+            </select>
+            <label>预约日期</label>
+            <input type="date">
+            <label>同行人数</label>
+            <select>
+                <option>1人（单人体验）</option>
+                <option>2人（情侣/朋友）</option>
+                <option>3人及以上（小团体）</option>
+            </select>
+            <label>联系电话</label>
+            <input type="tel" placeholder="请输入手机号">
+            <label>备注（可选）</label>
+            <input type="text" placeholder="如：偏好森系场景、需拍摄短片">
+            <button>提交预约（24小时内客服回复）</button>
+        </div>
+    </section>
+
+    <section id="faq">
+        <h2>常见问题 <span class="en-subtitle">FAQ</span></h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <h3>Q：单身可以预约婚礼体验吗？</h3>
+                <p>A：当然可以！我们欢迎所有对婚礼有憧憬的人，单身用户可体验“婚纱拍摄”“场景参观”“沉浸式流程”，也可参与“轻婚礼派对（Light Wedding Party）”结交朋友。</p>
+            </div>
+            <div class="faq-item">
+                <h3>Q：预约后可以更改体验类型或日期吗？</h3>
+                <p>A：可以！请至少提前1天拨打400-1234-5678联系客服更改，我们会根据档期尽力协调；若临时取消，需提前6小时告知，避免占用名额。</p>
+            </div>
+            <div class="faq-item">
+                <h3>Q：可以带亲友一起参观吗？</h3>
+                <p>A：可以！每位预约用户可携带1-2位亲友同行，亲友可免费参观场景、观看体验流程（不参与互动环节，如需参与需额外预约）。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>联系我们 <span class="en-subtitle">Contact Us</span></h2>
+        <p>📍 地址：XX市XX区XX路XX号XX商场3层（近地铁2号线XX站A口，步行5分钟）</p>
+        <p>📞 电话：400-1234-5678（客服时间：9:00-21:00）</p>
+        <p>📧 邮箱：dreamwedding@example.com</p>
+        <p>
+            <img src="qrcode.jpg" alt="微信公众号" style="width: 100px; height: 100px; margin: 0 10px;">
+        </p>
+        <p>（扫码关注，获取最新场景更新及优惠活动）</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 梦中的婚礼体验馆 | Dream Wedding Experience Hall</p>
+        <div class="footer-info">
+            <a href="#">隐私政策</a>
+            <a href="#">服务条款</a>
+            <a href="#">场景更新公告</a>
+        </div>
+    </footer>
+
+    <!-- 交互JS：导航固定+导航高亮 -->
+    <script>
+        // 1. 导航栏固定
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('main-nav');
+            const headerHeight = document.querySelector('header').offsetHeight;
+            if (window.scrollY > headerHeight) {
+                nav.classList.add('fixed-nav');
+            } else {
+                nav.classList.remove('fixed-nav');
+            }
+        });
+
+        // 2. 导航高亮（根据滚动位置）
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('#main-nav a');
+            let currentSection = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                if (window.scrollY >= (sectionTop - 100)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === currentSection) {
+                    link.style.color = '#6A8A55';
+                    link.style.textDecoration = 'underline';
+                } else {
+                    link.style.color = '#4A6A3E';
+                    link.style.text
